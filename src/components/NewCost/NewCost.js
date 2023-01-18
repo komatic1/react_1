@@ -1,5 +1,5 @@
 import CostForm from './CostForm'
-import './NewCost.css';
+import './NewCost.css'; 
 
 
 const NewCost = (props) => {
