@@ -24,7 +24,6 @@ const CostForm = (props) => {
             description: inputName,
             amount: inputAmount,
             date: new Date(inputDate),
-            show: true
         };
            
         props.onSaveCostData(costData);
@@ -34,42 +33,42 @@ const CostForm = (props) => {
     };
 
 
-    const clickEscapetHandler = () => {
-        //costData.show = false;
-    };
-
-    const clickAddtHandler = () => {
-        //costData.show = true;
-        
-    };
-
-    return (props.show === false ? 
-            <form onSubmit={submitHandler}>
-            <div className="new-cost__controls"> 
-                <div className="new-cost__control">
-                    <label>Название</label>
-                    <input type='text' value={inputName} onChange={nameChangeHandler} />
-                </div>
-                <div className="new-cost__control">
-                    <label>Сумма</label>
-                    <input type='number' value={inputAmount} onChange={amountChangeHandler} min='0.01' step='0.01' />
-                </div>
-                <div className="new-cost__control">
-                    <label>Дата</label>
-                    <input type='date' value={inputDate} onChange={dateChangeHandler}min='2019-01-01' step='2022-12-31' /> 
-                </div>        
-                <div className="new-cost__actions">
-                    <button type="submit">Добваить расход</button> 
-                    <button onClick={clickEscapetHandler}>Отмена</button>   
-                </div>    
+    return (
+        <form onSubmit={submitHandler}>
+          <div className="new-cost__controls">
+            <div className="new-cost__control">
+              <label>Название</label>
+              <input type="text" value={inputName} onChange={nameChangeHandler} />
             </div>
-            </form> 
-        : 
-            <div className="new-cost__controls"> 
-                <button onClick={clickAddtHandler}>Добавить новый расход</button>   
+            <div className="new-cost__control">
+              <label>Сумма</label>
+              <input
+                value={inputAmount}
+                onChange={amountChangeHandler}
+                type="number"
+                min="0.01"
+                step="0.01"
+              />
             </div>
-        );
-
-}
+            <div className="new-cost__control">
+              <label>Дата</label>
+              <input
+                value={inputDate}
+                onChange={dateChangeHandler}
+                type="date"
+                min="2019-01-01"
+                step="2022-12-31"
+              />
+            </div>
+            <div className="new-cost__actions">
+              <button type="submit">Добавить Расход</button>
+              <button type="button" onClick={props.onCancel}>
+                Отмена
+              </button>
+            </div>
+          </div>
+        </form>
+      );
+    };
 
 export default CostForm;
